@@ -178,3 +178,5 @@ export const getUserDetail = async (req, res) => {
     return res.status(500).json({ message: error.message });
   }
 };
+
+sendOtp, verifyOtp, signup, forgotPassword, changePassword, getUserDetail;

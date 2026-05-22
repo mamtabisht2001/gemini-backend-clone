@@ -92,8 +92,7 @@ export const chatroomDetail = async (req, res) => {
 export const postMessage = async (req, res) => {
   try {
     const userId = req.user.id;
-    const chatroomId = parseInt(req.params.id);
-    const { content } = req.body;
+    const { content , chatroomId} = req.body;
 
     const chatroom = await prisma.chatroom.findUnique({
       where: { id: chatroomId },
@@ -129,3 +128,5 @@ export const postMessage = async (req, res) => {
     res.status(500).json({ error: "Internal Server Error." });
   }
 };
+
+

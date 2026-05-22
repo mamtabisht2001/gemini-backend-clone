@@ -3,7 +3,6 @@ import { prisma } from "../config/prismaConfig.js";
 import { startOfToday } from "date-fns";
 
 const LIMIT = parseInt(process.env.BASIC_DAILY_LIMIT);
-console.log({LIMIT});
 
 export const rateLimit = async (req, res, next) => {
   const userId = req.user.id;

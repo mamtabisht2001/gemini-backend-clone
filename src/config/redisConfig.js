@@ -2,12 +2,15 @@ import dotenv from "dotenv";
 dotenv.config();
 import Redis from "ioredis";
 
-export const redis = new Redis(process.env.REDIS_URL, {
-  tls: process.env.REDIS_URL.startsWith("rediss://") ? {} : undefined,
-  socket: {
-    reconnectStrategy: () => 1000, 
+export const redis = new Redis(
+  { host: process.env.REDIS_HOST, port: Number(process.env.REDIS_PORT) },
+  {
+    tls: process.env.REDIS_URL.startsWith("rediss://") ? {} : undefined,
+    socket: {
+      reconnectStrategy: () => 1000,
+    },
   },
-});
+);
 
 redis.on("connect", () => console.log("Redis connected successfully"));
 redis.on("error", (err) => console.error("Redis error:", err));

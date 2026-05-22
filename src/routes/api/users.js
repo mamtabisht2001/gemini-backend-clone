@@ -37,7 +37,7 @@ router.get("/chatroom", auth, chatroomList);
 router.get("/chatroom/:id", auth, chatroomDetail);
 
 router.post(
-  "/chatroom/:id/message",
+  "/post-message",
   auth,
   rateLimit,
   postMessage
